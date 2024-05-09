@@ -4,6 +4,7 @@ export const makeRequest = async ({ url, method, body, wallet }: { url: string, 
   // if (!wallet) {
   //   return;
   // }
+  console.log('request', wallet)
   console.log((window as any).Telegram.WebApp.initData);
   const headers = {
     'Content-Type': 'application/json',
