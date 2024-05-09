@@ -5,10 +5,10 @@ export const makeRequest = async ({ url, method, body, wallet }: { url: string, 
   //   return;
   // }
   console.log('request', wallet)
-  console.log((window as any).Telegram.WebApp.initData);
+  console.log((window as any)?.Telegram?.WebApp?.initData);
   const headers = {
     'Content-Type': 'application/json',
-    'tg-data': (window as any).Telegram.WebApp.initData,
+    'tg-data': (window as any)?.Telegram?.WebApp?.initData || '',
     wallet: wallet || '',
   }
   body.tg_data = (window as any).Telegram.WebApp.initData;
