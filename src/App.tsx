@@ -32,11 +32,6 @@ const AppContainer = styled.div`
 
 export const socket = io(`http://localhost:3000`);
 
-if ((window as any).Telegram.WebApp) {
-  console.log('inited');
-  (window as any).Telegram.WebApp.ready();
-}
-
 function App() {
   const { network } = useTonConnect();
 
