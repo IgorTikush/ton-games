@@ -9,7 +9,7 @@ export const makeRequest = async ({ url, method, body, wallet }: { url: string, 
   const headers = {
     'Content-Type': 'application/json',
     'tg-data': (window as any).Telegram.WebApp.initData,
-    wallet
+    wallet: wallet || '',
   }
   body.tg_data = (window as any).Telegram.WebApp.initData;
   body = JSON.stringify(body);
