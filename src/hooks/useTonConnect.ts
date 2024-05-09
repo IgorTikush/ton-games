@@ -3,7 +3,7 @@ import { Sender, SenderArguments } from "ton-core";
 import { useTonConnectUI, useTonWallet } from "@tonconnect/ui-react";
 
 export function useTonConnect(): {
-  sender: Sender;
+  sender: any;
   connected: boolean;
   wallet: string | null;
   network: CHAIN | null;
@@ -14,7 +14,8 @@ export function useTonConnect(): {
   return {
     sender: {
       send: async (args: SenderArguments) => {
-        tonConnectUI.sendTransaction({
+        return tonConnectUI.sendTransaction({
+          network: CHAIN.TESTNET,
           messages: [
             {
               address: args.to.toString(),

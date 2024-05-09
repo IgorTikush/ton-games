@@ -1,13 +1,17 @@
-import "./App.css";
+import io from 'socket.io-client';
 import { TonConnectButton } from "@tonconnect/ui-react";
+import styled from "styled-components";
+import { CHAIN } from "@tonconnect/protocol";
+import "@twa-dev/sdk";
+
+import "./App.css";
+
 import { Counter } from "./components/Counter";
 import { Jetton } from "./components/Jetton";
 import { TransferTon } from "./components/TransferTon";
-import styled from "styled-components";
 import { Button, FlexBoxCol, FlexBoxRow } from "./components/styled/styled";
 import { useTonConnect } from "./hooks/useTonConnect";
-import { CHAIN } from "@tonconnect/protocol";
-import "@twa-dev/sdk";
+import { MainMenu } from "./components/MainMenu";
 
 const StyledApp = styled.div`
   background-color: #e8e8e8;
@@ -26,6 +30,13 @@ const AppContainer = styled.div`
   margin: 0 auto;
 `;
 
+export const socket = io(`http://localhost:3000`);
+
+if ((window as any).Telegram.WebApp) {
+  console.log('inited');
+  (window as any).Telegram.WebApp.ready();
+}
+
 function App() {
   const { network } = useTonConnect();
 
@@ -43,9 +54,10 @@ function App() {
                 : "N/A"}
             </Button>
           </FlexBoxRow>
-          <Counter />
-          <TransferTon />
-          <Jetton />
+          <MainMenu />
+          {/* <Counter /> */}
+          {/* <TransferTon />
+          <Jetton /> */}
         </FlexBoxCol>
       </AppContainer>
     </StyledApp>
