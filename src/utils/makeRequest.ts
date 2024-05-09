@@ -1,9 +1,9 @@
 import { useTonConnect } from "../hooks/useTonConnect";
 
 export const makeRequest = async ({ url, method, body, wallet }: { url: string, method: string, body: any, wallet: string | null }) => {
-  if (!wallet) {
-    return;
-  }
+  // if (!wallet) {
+  //   return;
+  // }
   console.log((window as any).Telegram.WebApp.initData);
   const headers = {
     'Content-Type': 'application/json',
