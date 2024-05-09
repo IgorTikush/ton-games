@@ -12,6 +12,7 @@ import { TransferTon } from "./components/TransferTon";
 import { Button, FlexBoxCol, FlexBoxRow } from "./components/styled/styled";
 import { useTonConnect } from "./hooks/useTonConnect";
 import { MainMenu } from "./components/MainMenu";
+import { useEffect } from 'react';
 
 const StyledApp = styled.div`
   background-color: #e8e8e8;
@@ -32,8 +33,26 @@ const AppContainer = styled.div`
 
 export const socket = io(`http://localhost:3000`);
 
+function loadTelegramSDK() {
+    const script = document.createElement('script');
+    script.src = "https://telegram.org/js/telegram-web-app.js";
+    script.async = true;
+    script.onload = () => {
+        if ((window as any).Telegram.WebApp) {
+            const res = (window as any).Telegram.WebApp.ready();
+            // console.log(res);
+            console.log("Telegram WebApp SDK loaded and ready.");
+        }
+    };
+    document.body.appendChild(script);
+}
+
 function App() {
   const { network } = useTonConnect();
+
+  useEffect(() => {
+        loadTelegramSDK();
+    }, []);
 
   return (
     <StyledApp>
