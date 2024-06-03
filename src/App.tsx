@@ -35,7 +35,7 @@ const AppContainer = styled.div`
   margin: 0 auto;
 `;
 
-export const socket = io(`http://localhost:3000`);
+export const socket = io(API_URL);
 
 async function loadTelegramSDK() {
   const script = document.createElement('script');
