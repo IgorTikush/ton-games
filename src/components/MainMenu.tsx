@@ -15,18 +15,21 @@ import { useEffect, useState } from "react";
 import { RockPaperScissorsGame } from "./Rock-paper-scissors-game";
 import { Address } from "ton-core";
 import { API_URL } from "../config";
+import { PurchaseModal } from "./purchase.modal";
+import { CircularProgress } from "@mui/material";
 
 export const MainMenu = () => {
   const { connected, sender, wallet } = useTonConnect();
   const [screen, setScreen] = useState('main');
   const [room, setRoom] = useState('');
-  // const { value, address, sendIncrement } = useCounterContract();
+  const [isSearching, setIsSearching] = useState(false);
 
   useEffect(() => {
     socket.on('gameReady', ({ room }) => {
-      setScreen('game');
       setRoom(room);
-      console.log(room);
+      setScreen('game');
+      // setRoom(room);
+      // console.log(room);
       // console.log('SecondPlayer connected');
       // setRoomName(room);
       // setScreen('game');
@@ -40,24 +43,29 @@ export const MainMenu = () => {
     />
   }
 
-  const sendTransaction = async (amount: bigint) => {
-    console.log('123')
-    // const res =  await sender.send({ to: '0QDGUvYWclDqT0QySRSXgbUOjmgS-R_Sd851OWgoio_CUme2',  value: amount }).catch((err: Error) => {
-    //   console.log(err);
-    //   return null;
-    // });
+  const getSearchButton = () => {
+    if (isSearching) {
+      return (<CircularProgress />)
+    }
 
-    // if (res) {
-    const res = await makeRequest({url: `${API_URL}/buy-completed`, method: 'POST', wallet, body: {txId: 'txId' }});
-    console.log(res);
-    // }
+    return (
+      <Button
+        disabled={!connected}
+        className={`Button ${connected ? "Active" : "Disabled"}`}
+        onClick={() => {
+          console.log(socket);
+          setIsSearching(true);
+          socket.emit('checkRooms');
+        }}
+      >
+        Enter Queue
+      </Button>
+    );
   }
 
   return (
     <div className="Container">
-      <Card onClick={() => {sendTransaction(100000000n)}}>
-        Buy Tokens
-      </Card>
+      
       {/* <TonConnectButton /> */}
 
       <Card
@@ -75,16 +83,7 @@ export const MainMenu = () => {
             <b>Value</b>
             <div>{value ?? "Loading..."}</div>
           </FlexBoxRow> */}
-          <Button
-            // disabled={!connected}
-            className={`Button ${connected ? "Active" : "Disabled"}`}
-            onClick={() => {
-              console.log(socket)
-              socket.emit('checkRooms');
-            }}
-          >
-            Enter Queue
-          </Button>
+          {getSearchButton()}
         {/* </FlexBoxCol> */}
       </Card>
     </div>
