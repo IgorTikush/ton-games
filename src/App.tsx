@@ -35,7 +35,7 @@ const AppContainer = styled.div`
   margin: 0 auto;
 `;
 
-export let socket = {};
+export let socket: any = {};
 
 async function loadTelegramSDK() {
   const script = document.createElement('script');
