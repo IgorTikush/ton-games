@@ -25,7 +25,7 @@ export const MainMenu = () => {
   const [isSearching, setIsSearching] = useState(false);
 
   useEffect(() => {
-    socket.on('gameReady', ({ room }) => {
+    socket.on('gameReady', ({ room }: any) => {
       setRoom(room);
       setScreen('game');
       // setRoom(room);

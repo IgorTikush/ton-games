@@ -63,7 +63,7 @@ export const RockPaperScissorsGame = (props: {roomName: string}) => {
   const [playerChoice, setPlayerChoice] = useState(null);
 
   useEffect(() => {
-    socket.on('gameResult', (result) => {
+    socket.on('gameResult', (result: any) => {
       const gameResult = result.winner === socket.id ? 'You win!' : 'You lose!';
       setResult(gameResult);
     })
