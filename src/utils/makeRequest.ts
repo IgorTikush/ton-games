@@ -7,7 +7,6 @@ export const makeRequest = async ({ url, method = 'GET', body = {}, wallet }: { 
   }
 
   const headers = {
-    'ngrok-skip-browser-warning': "any",
     'Content-Type': 'application/json',
     'tg-data': (window as any)?.Telegram?.WebApp?.initData || '',
     wallet: wallet || '',

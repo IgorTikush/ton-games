@@ -35,7 +35,7 @@ const AppContainer = styled.div`
   margin: 0 auto;
 `;
 
-export const socket = io(API_URL);
+export let socket = {};
 
 async function loadTelegramSDK() {
   const script = document.createElement('script');
@@ -73,6 +73,16 @@ function App() {
         method: 'POST',
       })
       .then((userInfo) => {
+        socket = io(API_URL, {
+          transportOptions: {
+            polling: {
+                extraHeaders: {
+                    'tg-data': (window as any)?.Telegram?.WebApp?.initData || '',
+                }
+            }
+          }
+        })
+        
         setUser(userInfo);
         console.log('userinfo', userInfo);
       })
