@@ -64,6 +64,11 @@ export const RockPaperScissorsGame = (props: {roomName: string}) => {
 
   useEffect(() => {
     socket.on('gameResult', (result: any) => {
+      if (result.status === 'draw') {
+        setResult('It\'s a draw!');
+        return;
+      }
+
       const gameResult = result.winner === socket.id ? 'You win!' : 'You lose!';
       setResult(gameResult);
     })
