@@ -1165,7 +1165,7 @@ PERFORMANCE OF THIS SOFTWARE.
   @media (prefers-color-scheme: dark) {
     border: 1px solid #fefefe;
   }
-`;function T4(){const[e]=p4(),t=YM();return console.log(t),{sender:{send:async r=>{var n;return e.sendTransaction({network:Ba.TESTNET,messages:[{address:r.to.toString(),amount:r.value.toString(),payload:(n=r.body)==null?void 0:n.toBoc().toString("base64")}],validUntil:Date.now()+5*60*1e3})}},connected:!!(t!=null&&t.account.address),wallet:(t==null?void 0:t.account.address)??null,network:(t==null?void 0:t.account.chain)??null}}const WD=[{id:"rock",name:"Rock",image:"https://pictures-misal.s3.amazonaws.com/Screenshot+2024-06-03+at+04.48.30.png"},{id:"paper",name:"Paper",image:"https://pictures-misal.s3.amazonaws.com/Screenshot+2024-06-03+at+04.48.40.png"},{id:"scissors",name:"Scissors",image:"https://pictures-misal.s3.amazonaws.com/Screenshot+2024-06-03+at+04.48.48.png"}],jD=Ci.div`
+`;function T4(){const[e]=p4(),t=YM();return console.log(t),{sender:{send:async r=>{var n;return e.sendTransaction({network:Ba.MAINNET,messages:[{address:r.to.toString(),amount:r.value.toString(),payload:(n=r.body)==null?void 0:n.toBoc().toString("base64")}],validUntil:Date.now()+5*60*1e3})}},connected:!!(t!=null&&t.account.address),wallet:(t==null?void 0:t.account.address)??null,network:(t==null?void 0:t.account.chain)??null}}const WD=[{id:"rock",name:"Rock",image:"https://pictures-misal.s3.amazonaws.com/Screenshot+2024-06-03+at+04.48.30.png"},{id:"paper",name:"Paper",image:"https://pictures-misal.s3.amazonaws.com/Screenshot+2024-06-03+at+04.48.40.png"},{id:"scissors",name:"Scissors",image:"https://pictures-misal.s3.amazonaws.com/Screenshot+2024-06-03+at+04.48.48.png"}],jD=Ci.div`
   text-align: center;
 `,HD=Ci.div`
   display: flex;
