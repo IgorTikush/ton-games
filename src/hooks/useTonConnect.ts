@@ -15,7 +15,7 @@ export function useTonConnect(): {
     sender: {
       send: async (args: SenderArguments) => {
         return tonConnectUI.sendTransaction({
-          network: CHAIN.TESTNET,
+          network: CHAIN.MAINNET,
           messages: [
             {
               address: args.to.toString(),
