@@ -26,7 +26,7 @@ export const PurchaseModal = ({ open, handleClose }: any) => {
   };
 
   const handleSubmit = async () => {
-    const res =  await sender.send({ to: '0QDGUvYWclDqT0QySRSXgbUOjmgS-R_Sd851OWgoio_CUme2',  value: quantity * 100000000 }).catch((err: Error) => {
+    const res =  await sender.send({ to: 'UQDGUvYWclDqT0QySRSXgbUOjmgS-R_Sd851OWgoio_CUtw8',  value: quantity * 1000000000 }).catch((err: Error) => {
       console.log(err);
       return null;
     });

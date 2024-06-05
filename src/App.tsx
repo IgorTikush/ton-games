@@ -6,9 +6,6 @@ import "@twa-dev/sdk";
 
 import "./App.css";
 
-import { Counter } from "./components/Counter";
-import { Jetton } from "./components/Jetton";
-import { TransferTon } from "./components/TransferTon";
 import { Button, Card, FlexBoxCol, FlexBoxRow } from "./components/styled/styled";
 import { useTonConnect } from "./hooks/useTonConnect";
 import { MainMenu } from "./components/MainMenu";
