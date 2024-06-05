@@ -19,7 +19,7 @@ export const PurchaseModal = ({ open, handleClose }: any) => {
   const [quantity, setQuantity] = useState(1);
 
   const handleQuantityChange = (event: any) => {
-      const value = parseInt(event.target.value, 10);
+      const value = event.target.value;
       setQuantity(value);
   };
 
