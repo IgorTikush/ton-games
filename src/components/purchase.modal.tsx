@@ -20,12 +20,13 @@ export const PurchaseModal = ({ open, handleClose }: any) => {
 
   const handleQuantityChange = (event: any) => {
       const value = parseInt(event.target.value, 10);
-      if (value > 0) {
-          setQuantity(value);
-      }
+      setQuantity(value);
   };
 
   const handleSubmit = async () => {
+    if (quantity <= 0) {
+      return;
+    }
     const res =  await sender.send({ to: 'UQDGUvYWclDqT0QySRSXgbUOjmgS-R_Sd851OWgoio_CUtw8',  value: quantity * 1000000000 }).catch((err: Error) => {
       console.log(err);
       return null;
