@@ -15,6 +15,7 @@ export const makeRequest = async ({ url, method = 'GET', body = {}, wallet }: { 
   body = JSON.stringify(body);
 
   const response = await fetch(url, { method, body, headers });
+  console.log(response)
   const data = await response.json();
   return data;
 }

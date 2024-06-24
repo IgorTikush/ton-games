@@ -5,6 +5,10 @@ export const Card = styled.div`
   border-radius: 8px;
   background-color: white;
   cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
   @media (prefers-color-scheme: dark) {
     background-color: #111;
@@ -16,6 +20,7 @@ export const FlexBoxRow = styled.div`
   flex-direction: row;
   gap: 10px;
   align-items: center;
+  justify-content: center;
 `;
 
 export const FlexBoxCol = styled.div`

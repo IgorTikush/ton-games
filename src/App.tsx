@@ -112,14 +112,14 @@ function App() {
     console.log('balance', user?.balance)
     if (user?.balance) {
       return (
-        <div style={{ marginLeft: 'auto' }}> 
+        <div style={{ display: 'flex', 'justifyContent': 'space-around', 'alignItems': 'center'}}> 
           balance: {user?.balance.toFixed(1)}
           {getWithdrawButton()}
         </div>
       )
     }
     return (
-      <Button style={{ marginLeft: 'auto' }} onClick={handleOpen}>
+      <Button style={{  }} onClick={handleOpen}>
         Buy Tokens
       </Button>
       )
@@ -141,15 +141,16 @@ function App() {
           <FlexBoxCol>
             <FlexBoxRow>
               <TonConnectButton />
-              <Button>
+              {/* <Button>
                 {network
                   ? network === CHAIN.MAINNET
                     ? "mainnet"
                     : "testnet"
                   : "N/A"}
-              </Button>
-              {getBalanceButton()}
+              </Button> */}
+              
             </FlexBoxRow>
+            {getBalanceButton()}
             {getGamesMenu()}
             
             {/* <Counter /> */}
