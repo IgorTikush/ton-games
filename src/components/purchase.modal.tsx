@@ -14,8 +14,7 @@ import { useTonAddress } from '@tonconnect/ui-react';
 export const PurchaseModal = ({ open, handleClose }: any) => {
   const { sender} = useTonConnect();
   const wallet = useTonAddress()
-  // const wallet = 'EQB84UaTZ8E5VauyUCyh9rpqjaw_G5Q3uEaYQJu6jzYtzeyN';
-  console.log('wallet', wallet);
+
   const [quantity, setQuantity] = useState(1);
 
   const handleQuantityChange = (event: any) => {
@@ -36,6 +35,8 @@ export const PurchaseModal = ({ open, handleClose }: any) => {
       const res = await makeRequest({url: `${API_URL}/buy-completed`, method: 'POST', wallet, body: {txId: 'txId' }});
       console.log(res);
     }
+
+    window.location.reload();
     handleClose();  // Close the modal after submission
   };
 
