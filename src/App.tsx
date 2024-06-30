@@ -74,7 +74,7 @@ function App() {
           transportOptions: {
             polling: {
                 extraHeaders: {
-                    'tg-data': (window as any)?.Telegram?.WebApp?.initData || '',
+                  'tg-data': (window as any)?.Telegram?.WebApp?.initData || '',
                 }
             }
           }
@@ -118,11 +118,14 @@ function App() {
         </div>
       )
     }
-    return (
-      <Button style={{  }} onClick={handleOpen}>
-        Buy Tokens
-      </Button>
+
+    if (wallet) {
+      return (
+        <Button style={{  }} onClick={handleOpen}>
+          Buy Tokens
+        </Button>
       )
+    }
   }
 
   const getGamesMenu = () => {
