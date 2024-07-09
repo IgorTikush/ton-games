@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
-import { socket } from "../App";
 import { Button } from "./styled/styled";
 import styled from "styled-components";
+import { socket } from "./MainMenu";
+// import { useTonAddress } from "@tonconnect/ui-react";
 
 const choices = [
   { id: 'rock', name: 'Rock', image: 'https://pictures-misal.s3.amazonaws.com/Screenshot+2024-06-03+at+04.48.30.png' },
@@ -62,6 +63,8 @@ export const RockPaperScissorsGame = (props: {roomName: string}) => {
   const [result, setResult] = useState('');
   const [playerChoice, setPlayerChoice] = useState(null);
 
+  // const wallet = useTonAddress();
+
   useEffect(() => {
     socket.on('gameResult', (result: any) => {
       if (result.status === 'draw') {
@@ -74,13 +77,12 @@ export const RockPaperScissorsGame = (props: {roomName: string}) => {
     })
   }, [])
   const makeMove = (move: string) => {
-    socket.emit('makeMove', { roomName: props.roomName, move })
+    socket.emit('makeMove', { roomName: props.roomName, move });
   }
 
   const handleClick = (choice: any) => {
     setPlayerChoice(choice);
     makeMove(choice);
-    // Here you can add logic for the computer's choice and determine the winner
   };
 
   if (result) {

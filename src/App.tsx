@@ -32,8 +32,6 @@ const AppContainer = styled.div`
   margin: 0 auto;
 `;
 
-export let socket: any = {};
-
 async function loadTelegramSDK() {
   const script = document.createElement('script');
   script.src = "https://telegram.org/js/telegram-web-app.js";
@@ -51,8 +49,7 @@ async function loadTelegramSDK() {
 const UserContext = createContext(null);
 
 function App() {
-  const { network } = useTonConnect();
-  const wallet = useTonAddress()
+  const wallet = useTonAddress();
 
   const [user, setUser] = useState<any>(null);
   const [openModal, setOpenModal] = useState(false);
@@ -63,29 +60,17 @@ function App() {
   }, []);
 
   useEffect(() => {
-    if (wallet) {
-      makeRequest({
-        url: `${API_URL}/user-info`,
-        wallet,
-        method: 'POST',
-      })
-      .then((userInfo) => {
-        socket = io(API_URL, {
-          transportOptions: {
-            polling: {
-                extraHeaders: {
-                  'tg-data': (window as any)?.Telegram?.WebApp?.initData || '',
-                }
-            }
-          }
-        })
-        
-        setUser(userInfo);
-        console.log('userinfo', userInfo);
-      })
-      .catch((error) => console.log('Failed to fetch user info', error));
-    }
-  }, [wallet]);
+    makeRequest({
+      url: `${API_URL}/user-info`,
+      wallet,
+      method: 'POST',
+    })
+    .then((userInfo) => {
+      setUser(userInfo);
+      console.log('userinfo', userInfo);
+    })
+    .catch((error) => console.log('Failed to fetch user info', error));
+  }, []);
 
   const withdraw = () => {
     setIsWithdrawInProgress(true);
@@ -129,11 +114,11 @@ function App() {
   }
 
   const getGamesMenu = () => {
-    if (user?.balance) {
+    // if (user?.balance) {
       return (
         <MainMenu />
       )
-    }
+    // }
   }
 
   return (
